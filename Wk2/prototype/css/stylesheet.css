@@ -1,0 +1,445 @@
+
+html {
+     background: -moz-linear-gradient(left, #313732 0%, #505951 50%, #313732 100%); /* FF3.6+ */
+     background: -webkit-gradient(linear, left top, right top, color-stop(0%,#313732), color-stop(50%,#505951), color-stop(100%,#313732)); /* Chrome,Safari4+ */
+     background: -webkit-linear-gradient(left, #313732 0%,#505951 50%,#313732 100%); /* Chrome10+,Safari5.1+ */
+     background: linear-gradient(to right, #313732 0%,#505951 50%,#313732 100%); /* W3C */ 
+     }
+     
+body {
+     margin: 0 auto;
+     width:900px;  
+     }
+     
+header {
+     width: 100%;
+     height: 75px;
+     background-color: #8AA8B0; 
+     }
+
+#logo {
+     width: 200px;
+     height: 100px;
+     float:left;
+     top: 0px;
+	 border:1px solid;
+     border-radius: 0 0 12px 12px;
+     background-color: #dedede;
+     }
+	 
+#logo img {
+	display:block;
+	margin: 5px;
+	}
+	
+#login { 
+     padding: 25px;
+     float:right;
+     }
+
+#login input[type="text"], #login input[type="password"]{ 
+     width: 150px;
+     height: 22px; /*weird display issue where text/password fields not same size though height is the same*/
+     padding: 0 0 0 10px;
+     }
+
+#login input[type="submit"]{
+     width:75px;
+     height:25px;
+     }
+
+#register {
+     width: 290px;
+     height: 380px;
+     background-color:gray;
+     margin-top: 55px;
+     float:right;
+     background-color:#dedede;
+     }
+     
+#register h1{ 
+     text-align:center;
+     }     
+     
+#register input[type="text"], #register input[type="password"], #register input[type="email"]{ 
+     width:225px;
+     height:30px;
+     margin:0 0 40px 20px;
+     padding-left:20px;
+     }
+
+#register input[type="submit"]{
+     width:100px;
+     height:40px;
+     float:right;
+     margin-right:40px;
+     }
+     
+aside { 
+     width: 590px;
+     height: 380px;
+     margin-top: 55px;
+     }
+     
+#secLower{
+     clear:both; 
+     width:100%;
+     height:190px;
+     margin-top:20px;
+     background-color: #dedede;
+     }
+   
+#innerLow{
+     margin:10px; 
+     width:880px;
+     height: 170px;
+     float:left;
+     background-color:#8aa8b0;      
+     }
+
+#innerLow article:nth-child(1){ 
+     width:275px;
+     height:125px;
+     margin-left:20px;
+     display:block;
+     float:left;
+     }
+     
+#innerLow article h2 { 
+     line-height: 50%;
+     }
+     
+#innerLow article:nth-child(2){ 
+     width:540px;
+     margin-left:45px;
+     float:left;
+     }
+
+#innlerLow article:nth-child(2) img{ 
+  	 
+	 }
+     
+footer { 
+     width:900px;
+     height:50px;
+     background-color:#8aa8b0;
+     margin-top:30px;
+     }
+
+footer p{
+     margin:15px; 
+     display:block;
+     float:left;
+     } 
+
+footer a {
+     margin:15px; 
+     float: right; 
+     }
+                  
+
+/*end of page 1 */
+
+/*begin of page 2*/
+#welcome {
+	padding:20px 20px 0 0;
+	float:right;
+	}
+#welcome h2, #welcome button{ 
+     display:inline;
+	      
+     }
+#welcome img{
+	margin-left:10px;
+	}	
+	 	
+#welcome button{ 
+     width:75px;
+     height:25px;
+	 margin-left:10px;   
+     }
+	 
+#dashboard{
+	width:270px;
+	height:590px;
+	background-color:#8aa8b0;
+	}
+
+#dashboard h1{
+	text-align:center;
+	}
+	
+#dashboard h2, #dashboard a{
+	margin:0 0 0 20px;
+    line-height:90%;
+	}
+
+#dashboard table{
+	margin-left:80px;
+	}
+
+#dashboard td{
+	text-align:right;
+	}	
+	
+#certPanel{
+	width:600px;
+	height:590px;
+	margin-top:55px;
+	float:right;
+	background-color:#8aa8b0
+	}
+	
+#certTitle h1{
+	float:left;
+	margin:30px 0 0 30px;
+	}
+
+#certTitle a{
+	float:right;
+	margin:30px 30px 0 0;
+	}
+
+#certInner{
+	clear:both;
+	width:540px;
+	height:475px;
+	margin:50px 30px 0 30px;
+	background-color:#dedede;
+	}
+	
+/*new cert page form specifics*/
+#certPanel h1 {
+	margin:5px 30px 0 30px;
+	}
+	
+#addInner{
+	clear:both;
+	width:540px;
+	height:525px;
+	margin:0px 30px 0 30px;
+	background-color:#dedede;
+	}
+	
+#details {
+	margin:0px 30px 0 20px;
+	}
+
+#details h2{
+	padding-top:5px;
+	}
+
+#details form p:nth-child(1), #details form p:nth-child(2), #details form p:nth-child(3){
+	text-align:right;
+	}
+
+#details form p:nth-child(4){
+	margin-left:70px;
+	}
+	
+#details form p:nth-child(5){
+	margin-left:70px;
+	}
+#details form p:nth-child(6){ 
+    position:relative;
+    left:85px;     
+    }
+		
+#details form p:nth-child(1) input[type="text"]{
+	width:330px;
+	height:20px;
+	float:right;
+	margin:0 0 0px 20px;
+	}
+	
+#details form p:nth-child(2) textarea{
+	width:330px;
+	height:50px;
+	float:right;
+	margin-left:20px;
+	}
+
+#details input[type="date"]{
+	width:110px;
+	height:20px;
+	margin-left:10px;
+	}
+	
+#details input[type="number"]{
+	width:120px;
+	height:20px;
+	margin-left:11px;
+	}
+	
+#details input[type="submit"]{
+	float:right;
+	}
+	
+#newCertTask{
+	margin:0px 30px 0 30px;
+	}
+	
+#newCertTask form p:nth-child(1), #newCertTask form p:nth-child(2), #newCertTask form p:nth-child(3){
+	text-align:right;
+	}
+    
+#newCertTask form p:nth-child(4){ 
+    position:relative;
+    left:85px;     
+    } 
+
+#newCertTask form p:nth-child(5){ 
+    position:relative;
+    left:65px;     
+    }     
+	
+#newCertTask form p:nth-child(1) input[type="text"]{
+	width:330px;
+	height:20px;
+	float:right;
+	margin:0 0 0px 10px;
+	}
+	
+#newCertTask form p:nth-child(2) textarea{
+	width:330px;
+	height:50px;
+	float:right;
+	margin-left:10px;
+	}
+	
+#newCertTask form p:nth-child(4) input[type="date"]{ 
+    margin-left:20px;
+    }
+    
+#newCertTask input[type="submit"], #newCertTask button{
+	margin-left:30px;
+	}
+
+#addTaskOut{ 
+    width:585px;
+    height:350px;
+    margin:200px auto 0 auto;
+    padding:1px;
+    background-color:#8AA8B0;
+    }
+    
+#addTaskInn{ 
+    width:535px;
+    height:300px;
+    margin:20px 20px;
+    padding:5px;
+    background-color:#dedede;        
+    }
+    
+#memberOut{ 
+    width:600px;
+    height:500px;
+    margin:200px auto 0 auto;
+    padding:1px;
+    background-color:#8aa8b0;        
+    }
+    
+#memberInn{ 
+    width: 560px;
+    height: 460px;
+    margin:20px 20px;
+    padding:1px;
+    background-color:#dedede;        
+    }
+    
+#memberInn h2{ 
+    margin-left:30px;
+    }
+
+#memberInn p{ 
+    margin-right:80px;
+    float:right;       
+    }
+    
+#memberInn form input[type="text"],#memberInn form input[type="password"],#memberInn form input[type="email"]{ 
+    margin-left:30px;
+    }    
+    
+#ctaCont{ 
+    margin-top:55px;
+    padding:0;      
+    }
+    
+#cta1{ 
+    position:relative;
+    top:0px;
+    }
+
+#cta2{ 
+    position:relative;
+    top:14px;
+    left:15px;
+    }
+   
+#cta3{ 
+    position:relative;
+    top:28px;
+    left:30px;
+    }
+    
+#cta4{ 
+    position:relative;
+    top:40px;
+    left:45px;
+    }
+   
+/*Classes*/
+.ctaCont{ 
+     width:545px;
+     height:85px;
+     background-color:#89a8af;
+     }	
+     
+.ctaTitle{ 
+    float:left;
+    margin-left:20px;  
+    }
+    
+.ctaText{
+    width:250px; 
+    float:right;
+    margin-right:20px;
+    margin-bottom:5px;
+    }
+          
+.style1{     
+     -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+     border-radius: 6px;
+     font-family:'Roboto', sans-serif;    
+     }
+     
+.button1{ 
+     background-color: #f26101;
+     color: #000000;
+     }
+
+.button2{
+	background-color: #bab9b9;
+	color:#000000;
+	}
+	
+.accField{ 
+    width:275px;
+    height:25px;
+    }
+
+    
+/*Causes css validation error but needed when jquery implemented.
+.group{
+	zoom:1
+	}
+*/		
+.buttLink:hover{
+	box-shadow:2px 2px 5px #888888;
+	}	
+	
+a:link{color:#000000;}
+a:visited{color:#000000;}
+a:hover{color:#ffffff;}
+a:active{color:#f26101;}
