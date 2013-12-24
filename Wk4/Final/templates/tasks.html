@@ -1,5 +1,5 @@
-    <script type="text/template" id="tasks-template">
-        {{#tasks}}
+$.tmpl('<h2>${projectName}</h2>
+<script type="text/template" id="tasks-template">
             		     <h2>Task Title 1</h2>
                     	    <div>
                 			   <p>Description:</p>
@@ -18,6 +18,5 @@
               						 <td>00 mo.</td>
               					  </tr>
               				   </table>
-                    	   </div>
-        {{/tasks}}
-    </script>
+                            </div>',projects);
+

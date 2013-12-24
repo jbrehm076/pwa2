@@ -1,29 +1,25 @@
 
-	<script type="text/template" id="certs-template">
-      {{#projects}}
-            <h2>{{name}}</h2>
-            <div>
-                <p>Description:</p>
-                <p id="description">{{description}}/p>
-                <table>
-                    <tr>
-                        <td>Priority:</td>
-                        <td id="priority">{{priority}}</td>
-                    </tr>
-                    <tr>
-                        <td>Status:</td>
-                        <td id="status">{{status}}</td>
-                    </tr>
-                    <tr>
-                        <td>Due Every:</td>
-                        <td id="periodicity">{{periodicity}}</td>
-                    </tr>
-                    <tr>
-                        <td>Due:</td>
-                        <td id="due">{{due}}</td>
-                    </tr>
-                </table>
-            </div>
-      {{/projects}}
-	</script>
+$.tmplC('<h2>${projectName}</h2>
+<div>
+    <p>Description:</p>
+    <p id="description">${projectDescription}</p>
+    <table>
+        <tr>
+            <td>Priority:</td>
+            <td id="priority">${priority}</td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td id="status">${status}</td>
+        </tr>
+        <tr>
+            <td>Due Every:</td>
+            <td id="periodicity">${periodicity}</td>
+        </tr>
+        <tr>
+            <td>Due:</td>
+            <td id="due">${dueDate}</td>
+        </tr>
+    </table>
+</div>',projects);
 

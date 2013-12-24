@@ -1,50 +1,105 @@
-$(function() {
+(function($) {
 
 
-
+    var hud = function(raw){
+        //console.log(raw.status);
+    };
 //Application
-
+//Get Projects
         $.ajax({
             url: 'xhr/get_projects.php',
             type: 'get',
             dataType: 'json',
             success: function(data){
-                    var cData = data;
-                    console.log(cData);
-                    $.get('templates/certs.html', function(template){
 
-                        var ctemplate = $('#certs-template').html();
+                    hud(data);
+                    var proObs = data.projects;
+                    for(var i = 0; i<proObs.length; i++){
 
 
-                        var stuff = Mustache.to_html(ctemplate, cData);
-                        console.log(stuff);
-                        $('#certDest').html(stuff);
-                    });
+                        var cData = proObs[i];
+                        var sta = cData.status;
 
-                /*var certs = response.projects;
-                var html = '';
-                var html = $.render(certs, "certtemplate");
-
-                $('#certs').append(html);*/
-
+                            switch(sta){
+                                case 'urgent':
+                                    $('#urgC').text(parseInt($('#urgC').text())+1);
+                                    $("#certs-template").tmpl(cData)
+                                        .appendTo("#tabs-1");
+                                    break;
+                                case 'complete':
+                                    $('#comC').text(parseInt($('#comC').text())+1);
+                                    $("#certs-template").tmpl(cData)
+                                        .appendTo("#tabs-2");
+                                    break;
+                                case 'active':
+                                    $('#actC').text(parseInt($('#actC').text())+1);
+                                    $("#certs-template").tmpl(cData)
+                                        .appendTo("#tabs-3");
+                                    break;
+                                case 'delayed':
+                                    $('#delC').text(parseInt($('#delC').text())+1);
+                                    $("#certs-template").tmpl(cData)
+                                        .appendTo("#tabs-4");
+                                    break;
+                            }
+                    };
             }
         });
+//Get Projects end
+//Get tasks
+    $.ajax({
+        url:'xhr/check_login.php',
+        type: 'get',
+        dataType: 'json',
+        success: function(r){
+            console.log(r.user.id);
 
+
+        $.ajax({
+        url: 'xhr/get_tasks.php',
+        type: 'get',
+        dataType: 'json',
+        success: function(data){
+            console.log(data);
+            hud(data);
+            var tasObs = data.tasks;
+            for(var i = 0; i<tasObs.length; i++){
+
+
+                var tData = tasObs[i];
+                var sta = tData.status;
+
+                switch(sta){
+                    case 'urgent':
+                        $('#urgT').text(parseInt($('#urgT').text())+1);
+                        $("#tasks-template").tmpl(tData)
+                            .appendTo("#tabs-1");
+                        break;
+                    case 'complete':
+                        $('#comT').text(parseInt($('#comT').text())+1);
+                        $("#tasks-template").tmpl(tData)
+                            .appendTo("#tabs-2");
+                        break;
+                    case 'active':
+                        $('#actT').text(parseInt($('#actT').text())+1);
+                        $("#tasks-template").tmpl(tData)
+                            .appendTo("#tabs-3");
+                        break;
+                    case 'delayed':
+                        $('#delT').text(parseInt($('#delT').text())+1);
+                        $("#tasks-template").tmpl(tData)
+                            .appendTo("#tabs-4");
+                        break;
+                }
+            };
+        }
+    });
+
+        }
+    });
+//Get Tasks end
 //Application End
-//Application Init
-   /* var init = function(){
-        $.get('templates/certs.html', function(htmlArg){
-            var cdata = $(htmlArg).find('#certs-template').html();
-            $.template('certtemplate', cdata);
-        });
-    };
-    init();
-//Application Init End
-//Application Events
-    $(document).ready(function(){
-        loadCert();
-    })*/
-//Application Events End
+
 
 //Load Landing
     var loadLanding = function(){
@@ -93,8 +148,10 @@ $(function() {
                     success: function(r){
                         if(r.error == 'Not logged in.' && window.location.pathname != '/crew%20leader/index.html'){
                             loadLanding();
+                            $('#uName').html( r.user.user_n);
+                            console.log(r.user.user_n);
                         }else{
-                            return r.user.user_n;
+
                         }
                         return false;
                     }
@@ -195,88 +252,202 @@ $(function() {
 //Function Calls
 
 
+//Member update info
+        var nameF = $( "#fName" ),
+            nameL = $( "#lName"),
+            memID = $( "#mID" ),
+            email = $( "#mEmail" ),
+            password = $( "#mPass" ),
+            allFields = $( [] ).add( nameF ).add( nameL).add( memID ).add( email ),
+            tips = $( ".validateTips" );
 
-//Update Member Info
-/*    var fName = $("#fName"),
-        lName = $("#lName"),
-        mID = $("#mID"),
-        mPass = $("mPass"),
-        mEmail = $("mEmail"),
-        allFields = $([]).add(fName).add(lName).add(mID).add(mPass).add(mEmail),
-        tips = $(".validateTips");
+        function updateTips( t ) {
+            tips
+                .text( t )
+                .addClass( "ui-state-highlight" );
+            setTimeout(function() {
+                tips.removeClass( "ui-state-highlight", 1500 );
+            }, 500 );
+        }
 
-    function updateTips(t){
+        function checkLength( o, n, min, max ) {
+            if ( o.val().length > max || o.val().length < min ) {
+                o.addClass( "ui-state-error" );
+                updateTips( "Length of " + n + " must be between " +
+                    min + " and " + max + "." );
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+
+        $( "#dialog-form" ).dialog({
+            autoOpen: false,
+            height: 625,
+            width: 650,
+            modal: true,
+
+            buttons: {
+                "Update Account": function() {
+
+                    var bValid = true;
+                    allFields.removeClass( "ui-state-error" );
+
+                    bValid = bValid && checkLength( nameF, "First Name", 3, 16 );
+                    bValid = bValid && checkLength( nameL, "Last Name", 3, 16 );
+                    //bValid = bValid && checkLength( memID, "Member ID", 3, 16 );
+
+                    //bValid = bValid && checkLength( email, "email", 6, 80 );
+
+
+                    console.log(bValid);
+                    if ( bValid ) {
+
+                        var fName= $('#fName').val();
+                        var lName= $('#lName').val();
+                        var mID =  $('#mID').val();
+                        var email= $('#mEmail').val();
+                        var dstring="first_name=" +  fName + "&last_name=" +  lName + "&user_n=" + mID + "&email=" + email;
+                        $.ajax({
+                            url: 'xhr/update_user.php',
+                            data: dstring,
+                            type: 'post',
+                            dataType: 'json',
+                            success: function(response){
+                                console.log(response);
+                            }
+
+                        });
+                    }
+                    $( this ).dialog( "close" );
+
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            },
+            close: function() {
+                allFields.val( "" ).removeClass( "ui-state-error" );
+            }
+        });
+
+        $( "#create-user" )
+            .button()
+            .click(function() {
+                $(".ui-dialog-titlebar").hide();
+                $( "#dialog-form" ).dialog( "open" );
+                $.ajax({
+                    url:'xhr/check_login.php',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(r){
+
+                        $('input[name="fName"]').val( r.user.first_name);
+                        $('input[name="lName"]').val( r.user.last_name);
+                        $('input[name="mID"]').val( r.user.user_n);
+                        $('input[name="mEmail"]').val( r.user.email);
+                    }
+                });
+            });
+
+//Update Member Info End
+//New Task popup
+    var tName = $( "#tName" ),
+        tDesc = $( "#tDesc"),
+        tStat = $( "#tStatus" ),
+        tDate = $( "#tDateDue" ),
+        allFields = $( [] ).add( tName ).add( tDesc ).add( tStat ).add( tDate ),
+        tips = $( ".validateTips" );
+
+    function updateTips( t ) {
         tips
-            .text(t)
-            .addClass("ui-state-highlight");
-        setTimeout(function(){
-            tips.removeClass("ui-state-highlight",1500);
-        }, 500);
+            .text( t )
+            .addClass( "ui-state-highlight" );
+        setTimeout(function() {
+            tips.removeClass( "ui-state-highlight", 1500 );
+        }, 500 );
     }
 
-    function checkLength(o,n,min,max){
-        if (o.val().length >max || o.val().length < min){
-            o.addClass("ui-state-error");
-            updateTips("Length of " + n + " must be between " + min + " and " + max + ".");
+    function checkLength( o, n, min, max ) {
+        if ( o.val().length > max || o.val().length < min ) {
+            o.addClass( "ui-state-error" );
+            updateTips( "Length of " + n + " must be between " +
+                min + " and " + max + "." );
             return false;
-        }else{
+        } else {
             return true;
         }
     }
 
-    $("#ncform").dialog({
+
+    $( "#dialog-form2" ).dialog({
         autoOpen: false,
-        height: 180,
-        width: 600,
+        height: 500,
+        width: 700,
         modal: true,
-         buttons: {
-            "Update Profile": function() {
+
+        buttons: {
+            "Update Account": function() {
+
                 var bValid = true;
-                allFields.removeClass("ui-state-error");
+                allFields.removeClass( "ui-state-error" );
 
-                bValid = bValid && checkLength( fname, "first_name", 3, 15);
-                bValid = bValid && checkLength( lName, "last_name",3,15);
-                bValid = bValid && checkLength( mID, "member_id",3,15);
-                bValid = bValid && checkLength( mPass, "member_pass",5,16);
-                bValid = bValid && checkLength( mEmail, "member_email",6,25);
+                bValid = bValid && checkLength( tName, "Task Name", 3, 16 );
+                bValid = bValid && checkLength( tDesc, "Last Name", 3, 45 );
 
 
-                if ( bValid ){
+
+                console.log(bValid);
+                if ( bValid ) {
+
+                    var fName= $('#fName').val();
+                    var lName= $('#lName').val();
+                    var mID =  $('#mID').val();
+                    var email= $('#mEmail').val();
+                    var dstring="first_name=" +  fName + "&last_name=" +  lName + "&user_n=" + mID + "&email=" + email;
                     $.ajax({
-                        url: 'xhr/update_client.php',
-                        data: newCertDS,
+                        url: 'xhr/update_user.php',
+                        data: dstring,
                         type: 'post',
                         dataType: 'json',
                         success: function(response){
-                            if(response.error){
-                                console.log(response);
-                                //showLoginError(response.error);
-                            }else{
-                                console.log(response);
-                                //loadApp(rUser);
-                            }
-                            return false;
+                            console.log(response);
                         }
 
                     });
-                    $(this).dialog("close");
                 }
+                $( this ).dialog( "close" );
+
             },
-            Cancel:function(){
-                $(this).dialog("close");
+            Cancel: function() {
+                $( this ).dialog( "close" );
             }
         },
-        close: function(){
-            allFields.val("").removeClass("ui-state-error");
+        close: function() {
+            allFields.val( "" ).removeClass( "ui-state-error" );
         }
     });
 
-
-
-
-
-*/
-//Update Member Info End
+    $( "#addTask" )
+        .button()
+        .click(function() {
+            $(".ui-dialog-titlebar").hide();
+            $( "#dialog-form2" ).dialog( "open" );
+            $.ajax({
+                url:'xhr/check_login.php',
+                type: 'get',
+                dataType: 'json',
+                success: function(r){
+                    console.log(r.user);
+                    $('input[name="tName"]').val( r.user.first_name);
+                    $('input[name="tDesc"]').val( r.user.last_name);
+                    $('input[name="tStatus"]').val( r.user.user_n);
+                    $('input[name="tDateDue"]').val( r.user.email);
+                }
+            });
+        });
+//New Task popup end
 //Function Calls End
 
 //library features
@@ -303,4 +474,4 @@ $(function() {
 //Library features END
 
 //END
-});
+})(jQuery);

@@ -314,7 +314,7 @@ footer a {
 #addTaskOut{ 
     width:585px;
     height:350px;
-    margin:200px auto 0 auto;
+    margin: 25px auto 0 auto;
     padding:1px;
     background-color:#8AA8B0;
     }
@@ -326,11 +326,14 @@ footer a {
     padding:5px;
     background-color:#dedede;        
     }
-    
+
+#addTask{
+    margin:0 0 0 420px;
+}
 #memberOut{ 
     width:600px;
     height:500px;
-    margin:200px auto 0 auto;
+    margin: 10px auto 0 auto;
     padding:1px;
     background-color:#8aa8b0;        
     }
@@ -385,6 +388,10 @@ footer a {
     }
    
 /*Classes*/
+.ui-widget-overlay{
+    background:#000000;
+    opacity:.5;
+    }
 .ctaCont{ 
      width:545px;
      height:85px;

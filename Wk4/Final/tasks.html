@@ -19,14 +19,14 @@
 		  <div id="welcome" class="style1">
 		     <h2>Welcome </h2>
 			 <h2>User</h2>
-			 <a href="account.html"><img src="images/option.png" alt="Menu" class="buttLink"></a>
+              <img src="images/option.png" alt="Menu" id="create-user" class="buttLink">
               <button type="button" id="btnLogOut" class="style1 button1 buttLink">Log Out</button>
           </div>
 	   </header>
 	   <section id="certPanel" class="style1">
        	  <div id="certTitle">
        	  	<h1>Tasks</h1>
-          	<a href="addTask.html"><img src="images/addC.png" alt="Add Cert" class="buttLink"></a>
+          	<img src="images/addC.png" alt="Add Cert" id="addTask" class="buttLink">
        	  </div>
        	  <div id="certInner" class="style1">
 		     <div id="tabs">
@@ -38,147 +38,71 @@
          		</ul>
             	<div id="tabs-1">
             	   <div id="acT1">
-                        <div class="group tasks">
-            		     <h2>Task Title 1</h2>
-                    	    <div>
-                			   <p>Description:</p>
-                			   <p>Description here</p>
-                               <table>
-              				      <tr>
-              					     <td>Priority:</td>
-              						 <td>Urgent</td>
-              					  </tr>
-              					  <tr>
-              						 <td>Status:</td>
-              						 <td>Active</td>
-              					  </tr>
-              					  <tr>
-              						 <td>Due Every:</td>
-              						 <td>00 mo.</td>
-              					  </tr>
-              				   </table>
-                    	   </div>
-                   	</div>
+
                    </div>
          	    </div>
                 <div id="tabs-2">
                     <div id="acT2">
-                        <div class="group">
-                        <h2>Task Title 2</h2>
-                        <div>
-                            <p>Description:</p>
-                            <p>Description here</p>
-                            <table>
-                                <tr>
-                                    <td>Priority:</td>
-                                    <td>Urgent</td>
-                                </tr>
-                                <tr>
-                                    <td>Status:</td>
-                                    <td>Active</td>
-                                </tr>
-                                <tr>
-                                    <td>Due Every:</td>
-                                    <td>00 mo.</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+
                     </div>
                 </div>
                 <div id="tabs-3">
                     <div id="acT3">
-                        <div class="group">
-                        <h2>Task Title 4</h2>
-                        <div>
-                            <p>Description:</p>
-                            <p>Description here</p>
-                            <table>
-                                <tr>
-                                    <td>Priority:</td>
-                                    <td>Urgent</td>
-                                </tr>
-                                <tr>
-                                    <td>Status:</td>
-                                    <td>Active</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+
                     </div>
                 </div>
                 <div id="tabs-4">
                     <div id="acT4">
-                        <div class="group">
-                        <h2>Task Title 3</h2>
-                        <div>
-                            <p>Description:</p>
-                            <p>Description here</p>
-                            <table>
-                                <tr>
-                                    <td>Priority:</td>
-                                    <td>Urgent</td>
-                                </tr>
-                                <tr>
-                                    <td>Status:</td>
-                                    <td>Active</td>
-                                </tr>
-                                <tr>
-                                    <td>Due Every:</td>
-                                    <td>00 mo.</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+
                     </div>
                 </div>
 		     </div>
 	      </div>	  
 	   </section>
-	   <aside id="dashboard" class="style1">
-       		<h1>Member ID</h1>
-            <div>
-              <a href="certs.html"><h2>Certifications</h2></a>
-              <table>
-              <tr>
-              <td>Urgent:</td>
-              <td>00</td>
-              </tr>
-              <tr>
-              <td>Complete:</td>
-              <td>00</td>
-              </tr>
-              <tr>
-              <td>Active:</td>
-              <td>00</td>
-              </tr>
-              <tr>
-              <td>Delayed:</td>
-              <td>00</td>
-              </tr>
-              </table>
-        	</div>
-            <div>
-              <a href="tasks.html"><h2>Tasks</h2></a>
-              <table>
-              <tr>
-              <td>Urgent:</td>
-              <td>00</td>
-              </tr>
-              <tr>
-              <td>Complete:</td>
-              <td>00</td>
-              </tr>
-              <tr>
-              <td>Active:</td>
-              <td>00</td>
-              </tr>
-              <tr>
-              <td>Delayed:</td>
-              <td>00</td>
-              </tr>
-              </table><br>
-         	</div>
+       <aside id="dashboard" class="style1">
+           <h1>Member ID</h1>
+           <div>
+               <a href="certs.html"><h2>Certifications</h2></a>
+               <table>
+                   <tr>
+                       <td>Urgent:</td>
+                       <td id="urgC">00</td>
+                   </tr>
+                   <tr>
+                       <td>Complete:</td>
+                       <td id="comC">00</td>
+                   </tr>
+                   <tr>
+                       <td>Active:</td>
+                       <td id="actC">00</td>
+                   </tr>
+                   <tr>
+                       <td>Delayed:</td>
+                       <td id="delC">00</td>
+                   </tr>
+               </table>
+           </div>
+           <div>
+               <a href="tasks.html"><h2>Tasks</h2></a>
+               <table>
+                   <tr>
+                       <td>Urgent:</td>
+                       <td id="urgT">00</td>
+                   </tr>
+                   <tr>
+                       <td >Complete:</td>
+                       <td id="comT">00</td>
+                   </tr>
+                   <tr>
+                       <td>Active:</td>
+                       <td id="actT">00</td>
+                   </tr>
+                   <tr>
+                       <td>Delayed:</td>
+                       <td id="delT">00</td>
+                   </tr>
+               </table><br>
+           </div>
             <a href="xxx">Upgrade Membership to Unlock</a>
             <div>
               <h2>Crew</h2>
@@ -206,12 +130,73 @@
 	      
 		  
 	   </aside>
+       <div id="dialog-form" title="Create new user">
+           <div id="memberOut" class="style1">
+               <div id="memberInn" class="style1">
+                   <div id="accountCont">
+                       <h2>My Account</h2>
+                       <form>
+                           <p>First Name: <input type="text" id="fName" name="fName" value="no first name entered" class="style1 accField"></p>
+                           <p>Last Name: <input type="text" id="lName" name="lName" value="no last name entered" class="style1 accField"></p>
+                           <p>Member ID: <input type="text" name="mID" id="mID" value="registered member ID" class="style1 accField"></p>
+                           <p>Password: <input type="password" name="mPass" value="*****" id="mPass" class="style1 accField"></p>
+                           <p>Email Address: <input type="email" name="mEmail" value="" id="mEmail" class="style1 accField"></p>
+
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div id="dialog-form2" title="new task">
+           <div id="addTaskOut" class="style1">
+               <div id="AddTaskInn" class="style1">
+                   <div id="newCertTask">
+                       <h2>Add a Task</h2>
+                       <form>
+                           <p>Name: <input type="text" name="newTaskName" id="tname" class="style1"></p>
+                           <p>Description: <textarea rows="3" cols="40" id="tDesc" class="style1">About the task.</textarea></p><br>
+                           <p>Status: <input type="radio" name="status" id="tStatus" value="urgent">Urgent
+                               <input type="radio" name="status" value="delayed">Delayed
+                               <input type="radio" name="status" value="complete">Complete
+                               <input type="radio" name="status" value="active">Active</p>
+                           <p>Due Date: <input type="date" name="dateDueTask" id="tDateDue" class="style1">
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <script type="text/template" id="certs-template">
+
+       </script>
+       <script type="text/template" id="tasks-template">
+           <h2>Task Title 1</h2>
+           <div>
+               <p>Description:</p>
+               <p>Description here</p>
+               <table>
+                   <tr>
+                       <td>Priority:</td>
+                       <td>Urgent</td>
+                   </tr>
+                   <tr>
+                       <td>Status:</td>
+                       <td>Active</td>
+                   </tr>
+                   <tr>
+                       <td>Due Every:</td>
+                       <td>00 mo.</td>
+                   </tr>
+               </table>
+           </div>'
+       </script>
 	   <footer class="style1">
 	      <p>&copy;Copyright 2013, all rights reserved.</p>
 		  <a href="xxx">Credits</a>
 	   </footer>
-  <script src="jquery/js/jquery-1.10.2.js"></script> 
-  <script src="jquery/js/jquery-ui-1.10.3.custom.js"></script>
-  <script src="js/main.js"></script>
+       <script src="jquery/js/jquery-1.10.2.js"></script>
+       <script src="jquery/js/jquery-ui-1.10.3.custom.js"></script>
+       <script src="js/jquery-tmpl.min.js"></script>
+       <script src="js/jsrender.min.js"></script>
+       <script src="js/main.js"></script>
   </body>
 </html>
